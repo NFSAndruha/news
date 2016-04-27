@@ -1,0 +1,28 @@
+<ion-content>
+  <div class="item item-body">
+    <div class="news">
+      <img class="full-image" ng-src="{{ fullStory.picture }}">
+      <div class="news-fullstory">
+        <div class="fullstory-name">
+          {{ fullStory.title }}
+        </div>
+        <div ng-bind-html='fullStory.intro'></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer-bar>
+  <div class="bar bar-footer color-red">
+    <button class="button button-clear" ng-click="showShareOptions(fullStory)">
+      <i class="icon ion-android-share bt-icon"></i>
+    </button>
+    <button class="button button-clear" ng-click="saveAsFavoriteWithPrepare(fullStory)"
+            ng-if="!checkFavorite(fullStory)">
+      <i class="icon ion-star bt-icon"></i>
+    </button>
+    <button class="button button-clear" ng-click="deleteFavorite(fullStory)"
+            ng-if="checkFavorite(fullStory)">
+      <i class="icon ion-trash-a bt-icon"></i>
+    </button>
+  </div>
+</ion-footer-bar>

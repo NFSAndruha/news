@@ -1,0 +1,48 @@
+<ion-view view-title="favorite">
+  <ion-content>
+    <div class="item item-body top">
+      <div class="news" ng-repeat="new in favorites | orderBy: fsort | filter: search.title track by $index">
+        <div class="news-img">
+          <img class="full-image" ng-src="{{ new.picture }}">
+
+          <div class="news-info col">
+            <div class="news-name no-dec"
+                 ng-click="openFullStory(new)">
+              {{ new.title }}
+            </div>
+            <div class="news-options row">
+              <i class="col col-80 icon ion-ios-calendar-outline"> {{ new.date * 1000 + 46 | date : "d.MM.yyyy" }}</i>
+              <div class="col-10" ng-click="showShareOptions(new)">
+                <i class="icon ion-android-share"></i>
+              </div>
+              <div class="col-10" ng-click="deleteFavorite(new)">
+                <i class="icon ion-trash-a"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar>
+    <div class="bar bar-footer color-red">
+      <div class="row">
+        <label class="item item-input">
+          <i class="icon ion-search placeholder-icon"></i>
+          <input type="search" placeholder="Пошук"
+              ng-model="search.title">
+        </label>
+        <div class="tab-item active"
+           ng-click="fsort = 'date'">
+          <i class="icon ion-chevron-up"></i>
+        </div>
+        <div class="tab-item active"
+           ng-click="fsort = '-date'">
+          <i class="icon ion-chevron-down"></i>
+        </div>
+      </div>
+    </div>
+  </ion-footer-bar>
+</ion-view>
+
+

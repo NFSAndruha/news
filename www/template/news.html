@@ -1,0 +1,31 @@
+<ion-view view-title="news">
+  <ion-content>
+    <ion-refresher pulling-text="Оновлення, зачекайте!" on-refresh="refresh()"></ion-refresher>
+    <div class="item item-body top">
+      <div class="news" ng-repeat="new in news | orderBy:'-date'">
+        <div class="news-img">
+          <img class="full-image" ng-src="{{ new.picture }}">
+
+          <div class="news-info col">
+            <div class="news-name no-dec"
+                 ng-click="openFullStory(new)">
+              {{ new.title }}
+            </div>
+            <div class="news-options row">
+              <i class="col col-80 icon ion-ios-calendar-outline"> {{ new.date * 1000 + 46 | date : "d.MM.yyyy" }}</i>
+              <a class="col-10" href="#" ng-click="showShareOptions(new)">
+                <i class="icon ion-android-share"></i>
+              </a>
+              <a class="col-10" href="#" ng-click="saveAsFavorite(new)" ng-if="!checkFavorite(new)">
+                <i class="icon ion-ios-star-outline"></i>
+              </a>
+              <a class="col-10" href="#" ng-click="deleteFavorite(new)" ng-if="checkFavorite(new)">
+                <i class="icon ion-ios-star"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
